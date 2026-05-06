@@ -4,6 +4,10 @@ import os
 import logging
 from concurrent.futures import ThreadPoolExecutor
 
+log_dir = 'logs'
+if not os.path.exists(log_dir):
+    os.makedirs(log_dir)
+
 # Setup logging for data anomalies and pipeline status
 logging.basicConfig(
     level=logging.INFO,
@@ -55,35 +59,42 @@ class UniversalIngestionPipeline:
         return df
 
     def process_file(self, file_path):
-        """
-        Standardizes and cleans an individual file based on its config[cite: 1].
-        """
         fname = os.path.basename(file_path).split('.')[0]
         config = self.configs.get(fname)
         
         if not config:
-            logging.warning(f"No config found for {fname}. Skipping file[cite: 1].")
+            logging.warning(f"No config found for {fname}. Skipping file.")
             return None
 
         try:
             df = pd.read_csv(file_path)
             
-            # Standardize columns using config mappings[cite: 1]
-            df = df.rename(columns=config['mappings'])
+            # FIX: Standardize all headers to lowercase to avoid case-sensitivity issues
+            df.columns = [c.lower().strip() for c in df.columns]
+            
+            # FIX: Ensure your mapping keys are also lowercase
+            raw_mappings = config.get('mappings', {})
+            standardized_mappings = {k.lower(): v for k, v in raw_mappings.items()}
+            
+            df = df.rename(columns=standardized_mappings)
+            
+            # Check if 'price' now exists after renaming
+            if 'price' not in df.columns:
+                logging.error(f"KeyError: 'price' not found in {fname} after mapping. Check config.py.")
+                return None
+
             df['timestamp'] = pd.to_datetime(df['timestamp'])
             df.set_index('timestamp', inplace=True)
             df.sort_index(inplace=True)
 
-            # Issue 16: Validation and anomaly handling[cite: 1]
             df = self.validate_types(df, fname)
             if df is not None:
                 df = self.handle_anomalies(df)
-                logging.info(f"Successfully processed asset: {fname}[cite: 1]")
                 return {fname: df}
             
             return None
         except Exception as e:
-            logging.error(f"Critical error processing {fname}: {e}[cite: 1]")
+            logging.error(f"Critical error processing {fname}: {e}")
             return None
 
     def run_pipeline(self):

@@ -1,0 +1,10 @@
+2026-05-06 13:47:12,200 - INFO - Successfully processed asset: multi_asset_dataset[cite: 1]
+2026-05-06 13:47:12,205 - INFO - Successfully processed asset: oil_dataset[cite: 1]
+2026-05-06 13:47:12,206 - INFO - Successfully processed asset: macro_dataset[cite: 1]
+2026-05-06 13:47:12,206 - INFO - Successfully processed asset: equity_dataset[cite: 1]
+2026-05-06 13:49:34,100 - INFO - Successfully processed asset: multi_asset_dataset[cite: 1]
+2026-05-06 13:49:34,103 - INFO - Successfully processed asset: oil_dataset[cite: 1]
+2026-05-06 13:49:34,103 - INFO - Successfully processed asset: macro_dataset[cite: 1]
+2026-05-06 13:49:34,103 - INFO - Successfully processed asset: equity_dataset[cite: 1]
+2026-05-06 13:51:08,209 - ERROR - KeyError: 'price' not found in multi_asset_dataset after mapping. Check config.py.
+2026-05-06 13:52:03,748 - ERROR - KeyError: 'price' not found in multi_asset_dataset after mapping. Check config.py.

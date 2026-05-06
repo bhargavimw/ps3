@@ -6,20 +6,15 @@ from config import ASSET_CONFIGS
 
 # Define the wrapper at the top level for Issue 17 scalability[cite: 1]
 def feature_engineer_wrapper(asset_tuple):
-    """
-    Helper function to parallelize feature engineering[cite: 1].
-    asset_tuple: (asset_name, dataframe)
-    """
     name, df = asset_tuple
-    # Initialize the engineer inside the process for isolation[cite: 1]
-    engineer = AdvancedFeatureEngineer({}) 
+    # Initialize inside the wrapper for ProcessPool compatibility
+    engineer = AdvancedFeatureEngineer(macro_df=None) 
     
-    # Apply rolling volatility, momentum, and technicals[cite: 1]
-    # (Assuming generate_features logic is accessible here)
-    processed_df = engineer.add_technical_indicators(df)
-    processed_df = engineer.add_risk_features(processed_df)
+    df = engineer.add_technical_indicators(df)
+    df = engineer.add_risk_features(df)
+    df = engineer.align_macro_data(df) # Optional macro integration
     
-    return name, processed_df
+    return name, df.dropna()
 
 def main():
     # 1. Ingestion[cite: 1]
