@@ -8,3 +8,17 @@
 2026-05-06 13:49:34,103 - INFO - Successfully processed asset: equity_dataset[cite: 1]
 2026-05-06 13:51:08,209 - ERROR - KeyError: 'price' not found in multi_asset_dataset after mapping. Check config.py.
 2026-05-06 13:52:03,748 - ERROR - KeyError: 'price' not found in multi_asset_dataset after mapping. Check config.py.
+2026-05-06 14:21:14,137 - ERROR - KeyError: 'price' not found in multi_asset_dataset after mapping. Check config.py.
+2026-05-06 14:22:41,327 - ERROR - KeyError: 'price' not found in multi_asset_dataset after mapping. Check config.py.
+2026-05-06 14:23:04,931 - ERROR - KeyError: 'price' not found in multi_asset_dataset after mapping. Check config.py.
+2026-05-06 14:23:06,424 - ERROR - Trade Rejected: oil_dataset at 2030-09-12 00:00:00 - Insufficient Capital[cite: 1]
+2026-05-06 14:23:06,879 - ERROR - Trade Rejected: equity_dataset at 2034-02-22 00:00:00 - Insufficient Capital[cite: 1]
+2026-05-06 14:24:55,492 - ERROR - KeyError: 'price' not found in multi_asset_dataset after mapping. Check config.py.
+2026-05-06 14:24:56,974 - ERROR - Trade Rejected: oil_dataset at 2030-09-12 00:00:00 - Insufficient Capital[cite: 1]
+2026-05-06 14:24:57,423 - ERROR - Trade Rejected: equity_dataset at 2034-02-22 00:00:00 - Insufficient Capital[cite: 1]
+2026-05-06 14:25:57,271 - ERROR - KeyError: 'price' not found in multi_asset_dataset after mapping. Check config.py.
+2026-05-06 14:25:58,767 - ERROR - Trade Rejected: oil_dataset at 2030-09-12 00:00:00 - Insufficient Capital[cite: 1]
+2026-05-06 14:25:59,240 - ERROR - Trade Rejected: equity_dataset at 2034-02-22 00:00:00 - Insufficient Capital[cite: 1]
+2026-05-06 14:29:10,421 - ERROR - KeyError: 'price' not found in multi_asset_dataset after mapping. Check config.py.
+2026-05-06 14:29:11,877 - ERROR - Trade Rejected: oil_dataset at 2030-09-12 00:00:00 - Insufficient Capital[cite: 1]
+2026-05-06 14:29:12,323 - ERROR - Trade Rejected: equity_dataset at 2034-02-22 00:00:00 - Insufficient Capital[cite: 1]
